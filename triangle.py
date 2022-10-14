@@ -1,4 +1,4 @@
-def triangle(n):
+def triangle(n, cha):
     k = n - 1
 
     # outer loop to handle number of rows
@@ -21,9 +21,7 @@ def triangle(n):
 
         # ending line after each row
         print("\r")
-
-# drivers code 
+n = int(input("enter n: "))
 cha = input("enter character: ")
-n = 5
-triangle(n)
+triangle(n, cha)
 

@@ -1,7 +1,3 @@
-
-from pygame import QUIT
-
-
 def hollowSquare(rows, cha):
 
 	for i in range(1, rows + 1):
@@ -87,7 +83,37 @@ def triangle(n, cha):
         print("\r")
     cha = input("enter character: ")
 
-# drivers code 
+def Diamond(rows, cha):
+	n = 0
+	for i in range(1, rows + 1):
+		# loop to print spaces
+		for j in range (1, (rows - i) + 1):
+			print(end = " ")
+		
+		# loop to print star
+		while n != (2 * i - 1):
+			print(cha, end = "")
+			n = n + 1
+		n = 0
+		
+		# line break
+		print()
+
+	k = 1
+	n = 1
+	for i in range(1, rows):
+		# loop to print spaces
+		for j in range (1, k + 1):
+			print(end = " ")
+		k = k + 1
+		
+		# loop to print star
+		while n <= (2 * (rows - i) - 1):
+			print(cha, end = "")
+			n = n + 1
+		n = 1
+		print()
+
 
 def main():
 
@@ -97,6 +123,7 @@ def main():
     c - to display circle pattern
     s - to display square pattern (with hallow and filled type)
     t - to display triangle pattern
+    d - to display diamond pattern
     q - to quit program
     """
     while run:
@@ -120,6 +147,11 @@ def main():
             n = int(input("enter n: "))
             cha = input("enter character: ")
             triangle(n, cha)
+
+        elif cmd == 'd':
+            rows = int(input("enter rows: "))
+            cha = input("enter character: ")
+            Diamond(rows, cha)
 
         elif cmd == 'q':
             run = False
