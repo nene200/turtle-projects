@@ -8,7 +8,7 @@ pygame.display.set_caption("Pong")
 
 FPS = 60
 
-WHITE = 255, 255, 255
+WHITE = (255, 255, 255)
 BLACK = 0, 0, 0
 
 PADDLE_WIDTH, PADDLE_HEIGHT = 20, 100
@@ -92,6 +92,7 @@ def draw(win, paddles, ball, left_score, right_score):
 def handle_collision(ball, left_paddle, right_paddle):
         if ball.y + ball.radius >= HEIGHT:
             ball.y_vel *= -1
+            
         elif ball.y - ball.radius <= 0:
             ball.y_vel *= -1
 
@@ -109,13 +110,13 @@ def handle_collision(ball, left_paddle, right_paddle):
         else:
             if ball.y >= right_paddle.y and ball.y <= right_paddle.y + right_paddle.height:
                 if ball.x - ball.radius >= right_paddle.x:  
-                    ball.x_vel * -1
+                    ball.x_vel *= -1
 
                     middle_y = right_paddle.y + right_paddle.height / 2
                     difference_in_y = middle_y - ball.y
                     reduction_factor = (right_paddle.height / 2) / ball.MAX_VEL
                     y_vel = difference_in_y / reduction_factor
-                    ball.y_vel = y_vel
+                    ball.y_vel = -1 * y_vel
 
 
 def handle_paddle_movement(keys, left_paddle, right_paddle):
@@ -176,7 +177,7 @@ def main():
         if won:
             text = SCORE_FONT.render(win_text, 1, WHITE)
             WIN.blit(text, WIDTH//2 - text.get_width() //
-            2, HEIGHT//2 - text.get.height()//2)
+                     2, HEIGHT//2 - text.get.height()//2)
             pygame.display.update()
             pygame.time.delay(5000)
             ball.reset()
